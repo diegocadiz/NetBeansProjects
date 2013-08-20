@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMaterialTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMaterialLabel_codigoMaterial}" for="codigoMaterial" />
+                    <h:inputText id="codigoMaterial" value="#{materialController.selected.codigoMaterial}" title="#{bundle.CreateMaterialTitle_codigoMaterial}" required="true" requiredMessage="#{bundle.CreateMaterialRequiredMessage_codigoMaterial}"/>
+                    <h:outputLabel value="#{bundle.CreateMaterialLabel_nombreMaterial}" for="nombreMaterial" />
+                    <h:inputText id="nombreMaterial" value="#{materialController.selected.nombreMaterial}" title="#{bundle.CreateMaterialTitle_nombreMaterial}" required="true" requiredMessage="#{bundle.CreateMaterialRequiredMessage_nombreMaterial}"/>
+                    <h:outputLabel value="#{bundle.CreateMaterialLabel_descripcionMaterial}" for="descripcionMaterial" />
+                    <h:inputText id="descripcionMaterial" value="#{materialController.selected.descripcionMaterial}" title="#{bundle.CreateMaterialTitle_descripcionMaterial}" />
+                    <h:outputLabel value="#{bundle.CreateMaterialLabel_precioCompraToneladaMaterial}" for="precioCompraToneladaMaterial" />
+                    <h:inputText id="precioCompraToneladaMaterial" value="#{materialController.selected.precioCompraToneladaMaterial}" title="#{bundle.CreateMaterialTitle_precioCompraToneladaMaterial}" required="true" requiredMessage="#{bundle.CreateMaterialRequiredMessage_precioCompraToneladaMaterial}"/>
+                    <h:outputLabel value="#{bundle.CreateMaterialLabel_precioVentaToneladaMaterial}" for="precioVentaToneladaMaterial" />
+                    <h:inputText id="precioVentaToneladaMaterial" value="#{materialController.selected.precioVentaToneladaMaterial}" title="#{bundle.CreateMaterialTitle_precioVentaToneladaMaterial}" />
+                    <h:outputLabel value="#{bundle.CreateMaterialLabel_purezaIngresoMaterial}" for="purezaIngresoMaterial" />
+                    <h:inputText id="purezaIngresoMaterial" value="#{materialController.selected.purezaIngresoMaterial}" title="#{bundle.CreateMaterialTitle_purezaIngresoMaterial}" />
+                    <h:outputLabel value="#{bundle.CreateMaterialLabel_purezaSalidaMaterial}" for="purezaSalidaMaterial" />
+                    <h:inputText id="purezaSalidaMaterial" value="#{materialController.selected.purezaSalidaMaterial}" title="#{bundle.CreateMaterialTitle_purezaSalidaMaterial}" />
+                    <h:outputLabel value="#{bundle.CreateMaterialLabel_estadoMaterial}" for="estadoMaterial" />
+                    <h:inputText id="estadoMaterial" value="#{materialController.selected.estadoMaterial}" title="#{bundle.CreateMaterialTitle_estadoMaterial}" required="true" requiredMessage="#{bundle.CreateMaterialRequiredMessage_estadoMaterial}"/>
+                    <h:outputLabel value="#{bundle.CreateMaterialLabel_fechaHoraCreacionMaterial}" for="fechaHoraCreacionMaterial" />
+                    <h:inputText id="fechaHoraCreacionMaterial" value="#{materialController.selected.fechaHoraCreacionMaterial}" title="#{bundle.CreateMaterialTitle_fechaHoraCreacionMaterial}" required="true" requiredMessage="#{bundle.CreateMaterialRequiredMessage_fechaHoraCreacionMaterial}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{materialController.create}" value="#{bundle.CreateMaterialSaveLink}" style="font-weight: bold; color:#FF6600;"/>
+                <br />
+                <br />
+                <h:commandLink action="#{materialController.prepareList}" value="#{bundle.CreateMaterialShowAllLink}" immediate="true" style="font-weight: bold; color:#FF6600;"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMaterialIndexLink}" style="font-weight: bold; color:#FF6600;"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

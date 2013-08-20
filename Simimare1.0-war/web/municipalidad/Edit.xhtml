@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMunicipalidadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMunicipalidadLabel_codigoMunicipalidad}" for="codigoMunicipalidad" />
+                    <h:inputText id="codigoMunicipalidad" value="#{municipalidadController.selected.codigoMunicipalidad}" title="#{bundle.EditMunicipalidadTitle_codigoMunicipalidad}" required="true" requiredMessage="#{bundle.EditMunicipalidadRequiredMessage_codigoMunicipalidad}"/>
+                    <h:outputLabel value="#{bundle.EditMunicipalidadLabel_nombreMunicipalidad}" for="nombreMunicipalidad" />
+                    <h:inputText id="nombreMunicipalidad" value="#{municipalidadController.selected.nombreMunicipalidad}" title="#{bundle.EditMunicipalidadTitle_nombreMunicipalidad}" required="true" requiredMessage="#{bundle.EditMunicipalidadRequiredMessage_nombreMunicipalidad}"/>
+                    <h:outputLabel value="#{bundle.EditMunicipalidadLabel_fonoMunicipalidad}" for="fonoMunicipalidad" />
+                    <h:inputText id="fonoMunicipalidad" value="#{municipalidadController.selected.fonoMunicipalidad}" title="#{bundle.EditMunicipalidadTitle_fonoMunicipalidad}" />
+                    <h:outputLabel value="#{bundle.EditMunicipalidadLabel_emailMunicipalidad}" for="emailMunicipalidad" />
+                    <h:inputText id="emailMunicipalidad" value="#{municipalidadController.selected.emailMunicipalidad}" title="#{bundle.EditMunicipalidadTitle_emailMunicipalidad}" />
+                    <h:outputLabel value="#{bundle.EditMunicipalidadLabel_direccionMunicipalidad}" for="direccionMunicipalidad" />
+                    <h:inputText id="direccionMunicipalidad" value="#{municipalidadController.selected.direccionMunicipalidad}" title="#{bundle.EditMunicipalidadTitle_direccionMunicipalidad}" />
+                    <h:outputLabel value="#{bundle.EditMunicipalidadLabel_estadoMunicipalidad}" for="estadoMunicipalidad" />
+                    <h:inputText id="estadoMunicipalidad" value="#{municipalidadController.selected.estadoMunicipalidad}" title="#{bundle.EditMunicipalidadTitle_estadoMunicipalidad}" required="true" requiredMessage="#{bundle.EditMunicipalidadRequiredMessage_estadoMunicipalidad}"/>
+                    <h:outputLabel value="#{bundle.EditMunicipalidadLabel_fechaHoraCreacionMunicipalidad}" for="fechaHoraCreacionMunicipalidad" />
+                    <h:inputText id="fechaHoraCreacionMunicipalidad" value="#{municipalidadController.selected.fechaHoraCreacionMunicipalidad}" title="#{bundle.EditMunicipalidadTitle_fechaHoraCreacionMunicipalidad}" required="true" requiredMessage="#{bundle.EditMunicipalidadRequiredMessage_fechaHoraCreacionMunicipalidad}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{municipalidadController.update}" value="#{bundle.EditMunicipalidadSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMunicipalidadViewLink}"/>
+                <br />
+                <h:commandLink action="#{municipalidadController.prepareList}" value="#{bundle.EditMunicipalidadShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMunicipalidadIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

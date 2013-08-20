@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMunicipalidadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMunicipalidadLabel_codigoMunicipalidad}"/>
+                    <h:outputText value="#{municipalidadController.selected.codigoMunicipalidad}" title="#{bundle.ViewMunicipalidadTitle_codigoMunicipalidad}"/>
+                    <h:outputText value="#{bundle.ViewMunicipalidadLabel_nombreMunicipalidad}"/>
+                    <h:outputText value="#{municipalidadController.selected.nombreMunicipalidad}" title="#{bundle.ViewMunicipalidadTitle_nombreMunicipalidad}"/>
+                    <h:outputText value="#{bundle.ViewMunicipalidadLabel_fonoMunicipalidad}"/>
+                    <h:outputText value="#{municipalidadController.selected.fonoMunicipalidad}" title="#{bundle.ViewMunicipalidadTitle_fonoMunicipalidad}"/>
+                    <h:outputText value="#{bundle.ViewMunicipalidadLabel_emailMunicipalidad}"/>
+                    <h:outputText value="#{municipalidadController.selected.emailMunicipalidad}" title="#{bundle.ViewMunicipalidadTitle_emailMunicipalidad}"/>
+                    <h:outputText value="#{bundle.ViewMunicipalidadLabel_direccionMunicipalidad}"/>
+                    <h:outputText value="#{municipalidadController.selected.direccionMunicipalidad}" title="#{bundle.ViewMunicipalidadTitle_direccionMunicipalidad}"/>
+                    <h:outputText value="#{bundle.ViewMunicipalidadLabel_estadoMunicipalidad}"/>
+                    <h:outputText value="#{municipalidadController.selected.estadoMunicipalidad}" title="#{bundle.ViewMunicipalidadTitle_estadoMunicipalidad}"/>
+                    <h:outputText value="#{bundle.ViewMunicipalidadLabel_fechaHoraCreacionMunicipalidad}"/>
+                    <h:outputText value="#{municipalidadController.selected.fechaHoraCreacionMunicipalidad}" title="#{bundle.ViewMunicipalidadTitle_fechaHoraCreacionMunicipalidad}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{municipalidadController.destroyAndView}" value="#{bundle.ViewMunicipalidadDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMunicipalidadEditLink}"/>
+                <br />
+                <h:commandLink action="#{municipalidadController.prepareCreate}" value="#{bundle.ViewMunicipalidadCreateLink}" />
+                <br />
+                <h:commandLink action="#{municipalidadController.prepareList}" value="#{bundle.ViewMunicipalidadShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMunicipalidadIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

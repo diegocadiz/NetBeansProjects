@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMunicipalidadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMunicipalidadEmpty}" rendered="#{municipalidadController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{municipalidadController.items.rowCount > 0}">
+                    <h:outputText value="#{municipalidadController.pagination.pageFirstItem + 1}..#{municipalidadController.pagination.pageLastItem + 1}/#{municipalidadController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{municipalidadController.previous}" value="#{bundle.Previous} #{municipalidadController.pagination.pageSize}" rendered="#{municipalidadController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{municipalidadController.next}" value="#{bundle.Next} #{municipalidadController.pagination.pageSize}" rendered="#{municipalidadController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{municipalidadController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMunicipalidadTitle_codigoMunicipalidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoMunicipalidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMunicipalidadTitle_nombreMunicipalidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreMunicipalidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMunicipalidadTitle_fonoMunicipalidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fonoMunicipalidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMunicipalidadTitle_emailMunicipalidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailMunicipalidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMunicipalidadTitle_direccionMunicipalidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccionMunicipalidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMunicipalidadTitle_estadoMunicipalidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estadoMunicipalidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMunicipalidadTitle_fechaHoraCreacionMunicipalidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaHoraCreacionMunicipalidad}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{municipalidadController.prepareView}" value="#{bundle.ListMunicipalidadViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{municipalidadController.prepareEdit}" value="#{bundle.ListMunicipalidadEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{municipalidadController.destroy}" value="#{bundle.ListMunicipalidadDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{municipalidadController.prepareCreate}" value="#{bundle.ListMunicipalidadCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMunicipalidadIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
